@@ -14,7 +14,7 @@ import java.util.UUID;
 @ToString
 public class Message {
     private final String id;
-    private final Map<String, Object> payload;
+    private final Map<String, Object> payload;//실제 데이터(주소, 내용 등)
     private final long timestamp;
 
    public Message(Map<String, Object>payload){
@@ -39,7 +39,7 @@ public class Message {
    }
 
 
-
+   //제네릭
    @SuppressWarnings("unchecked")
     public <T> T get(String key){
        return (T) payload.get(key);

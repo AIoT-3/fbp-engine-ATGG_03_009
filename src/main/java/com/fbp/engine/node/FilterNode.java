@@ -34,13 +34,12 @@ public class FilterNode implements Node {
 
     @Override
     public void process(Message message) {
+
+        Object value = message.get(key);
         // 1. key 존재 여부 확인
-        if (!message.hasKey(key)) {
+        if (value == null) {
             return; // 키 없으면 무시
         }
-
-        // 2. 값 꺼내기 (제네릭 사용)
-        Object value = message.get(key);
 
         // 3. 타입 체크 (안전성)
         if (!(value instanceof Number)) {
