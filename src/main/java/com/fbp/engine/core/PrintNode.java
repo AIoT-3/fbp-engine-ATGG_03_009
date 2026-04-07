@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PrintNode implements Node {
     private final String id;
-    private final InputPort inputPort = new DefaultInputPort(this);
+    private final InputPort inputPort = new DefaultInputPort(this,"in");
 
     public PrintNode(String id) {
         this.id = id;

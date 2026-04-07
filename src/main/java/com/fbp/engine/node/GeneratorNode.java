@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class GeneratorNode implements Node {
     private final String id;
-    private final OutputPort outputPort = new DefaultOutputPort();
+    private final OutputPort outputPort = new DefaultOutputPort("out");
 
     public GeneratorNode(String id) {
         this.id = id;

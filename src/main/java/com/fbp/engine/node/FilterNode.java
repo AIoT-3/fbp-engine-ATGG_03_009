@@ -15,8 +15,8 @@ public class FilterNode implements Node {
         this.key = key;
         this.threshold = threshold;
 
-        this.inputPort = new DefaultInputPort(this);
-        this.outputPort = new DefaultOutputPort();
+        this.inputPort = new DefaultInputPort(this,"in");
+        this.outputPort = new DefaultOutputPort("out");
     }
 
     public InputPort getInputPort() {
@@ -51,9 +51,9 @@ public class FilterNode implements Node {
 
         // 4. threshold 비교
         if (numericValue >= threshold) {
-            // 조건 만족 → 다음 노드로 전달
+            // 조건 만족 -> 다음 노드로 전달
             outputPort.send(message);
         }
-        // else: 아무것도 안함 (필터링)
+        // else: 아무것도 안함
     }
 }
