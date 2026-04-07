@@ -44,7 +44,7 @@ class ConnectionTest {
         InputPort inputPort = new DefaultInputPort(node,"in");
         connection.setTarget(inputPort);
 
-        Message message = new Message(Map.of("a",1));
+        Message message = new Message(Map.of("v",1));
         connection.deliver(message);
     }
 
