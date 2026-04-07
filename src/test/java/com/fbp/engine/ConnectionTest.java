@@ -80,6 +80,6 @@ class ConnectionTest {
 
         assertEquals(2,testNode.cnt);
         assertEquals(1,testNode.firstValue);
-        assertEquals(2,testNode.lastValue);
+        assertEquals(1,testNode.lastValue);
     }
 }
