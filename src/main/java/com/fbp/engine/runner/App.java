@@ -17,6 +17,8 @@ public class App {
         Thread t2 = new Thread(new PrintNode("print",connection1));
         Thread t3 = new Thread(new FilterNode("filter","f",30,connection,connection1));
 
+
+
         t1.start();
         t2.start();
         t3.start();

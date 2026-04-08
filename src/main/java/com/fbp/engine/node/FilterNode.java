@@ -39,9 +39,12 @@ public class FilterNode implements Node,Runnable{
         Message message = null;
         try {
             while (running){
+                System.out.println("현재 버퍼 크기: " + input.getBufferSize());
                 message = input.poll();
 
                 String data = (String) message.get("data");
+
+                Thread.sleep(1000);
 
                 if(data.contains("3")){
                     output.deliver(message);

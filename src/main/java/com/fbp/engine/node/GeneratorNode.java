@@ -44,7 +44,7 @@ public class GeneratorNode implements Runnable,Node {
                 Message message = new Message(Map.of("data","메시지: "+i));
                 connection.deliver(message);
                 System.out.println("생산: "+message);
-                Thread.sleep(1000);
+                Thread.sleep(100);
 
             }
         } catch (InterruptedException e) {

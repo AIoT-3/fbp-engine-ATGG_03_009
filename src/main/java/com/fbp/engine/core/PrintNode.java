@@ -33,8 +33,11 @@ public class PrintNode implements Node,Runnable {
     public void run() {
         try{
             while (true){
+                System.out.println("대기중");
                 Message message = connection.poll();
                 System.out.println("소비: "+message);
+
+                Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
