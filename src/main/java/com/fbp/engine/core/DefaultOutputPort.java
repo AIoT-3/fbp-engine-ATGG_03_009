@@ -14,7 +14,7 @@ public class DefaultOutputPort implements OutputPort{
     }
 
     @Override
-    public void send(Message message) {
+    public void send(Message message) throws InterruptedException {
         for(Connection con: connections){
             con.deliver(message);
         }

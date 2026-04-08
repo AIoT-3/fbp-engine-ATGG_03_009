@@ -38,7 +38,7 @@ class ConnectionTest {
     }
 
     @Test
-    void testDeliverToTarget(){
+    void testDeliverToTarget() throws InterruptedException {
         Connection connection = new Connection("c1");
         TestNode node = new TestNode();
         InputPort inputPort = new DefaultInputPort(node,"in");
@@ -56,7 +56,7 @@ class ConnectionTest {
     }
 
     @Test
-    void testBufferSize(){
+    void testBufferSize() throws InterruptedException {
         Connection connection = new Connection("c3");
 
         connection.deliver(new Message(Map.of()));
@@ -66,7 +66,7 @@ class ConnectionTest {
     }
 
     @Test
-    void testOrder(){
+    void testOrder() throws InterruptedException {
         Connection connection = new Connection("c4");
 
         TestNode testNode = new TestNode();

@@ -14,7 +14,7 @@ public class DefaultInputPort implements InputPort {
     }
 
     @Override
-    public void receive(Message message) {
+    public void receive(Message message) throws InterruptedException {
         //메시지를 받으면 해당 노드의 호출
         node.process(message);
     }

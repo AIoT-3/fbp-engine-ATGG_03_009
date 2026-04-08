@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class DefaultOutputPortTest {
 
     @Test
-    void testOneConnection(){
+    void testOneConnection() throws InterruptedException {
         DefaultOutputPort outputPort = new DefaultOutputPort("out");
 
         Connection connection = new Connection("c1");
@@ -31,7 +31,7 @@ class DefaultOutputPortTest {
     }
 
     @Test
-    void testMultiConnection(){
+    void testMultiConnection() throws InterruptedException {
         DefaultOutputPort outputPort = new DefaultOutputPort("out");
 
         Connection connection = new Connection("c1");

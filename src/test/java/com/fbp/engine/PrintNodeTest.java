@@ -36,4 +36,17 @@ class PrintNodeTest {
 
         assertNotNull(node);
     }
+
+    @Test
+    void testPrintNode(){
+        PrintNode node = new PrintNode("p1");
+        assertNotNull(node.getInputPort());
+    }
+
+    @Test
+    void testConnectionInputPort(){
+        PrintNode printNode = new PrintNode("p1");
+
+        assertDoesNotThrow(() -> printNode.getInputPort().receive(new Message(Map.of("a",1))));
+    }
 }

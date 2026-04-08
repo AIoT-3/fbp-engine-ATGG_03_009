@@ -2,30 +2,29 @@ package com.fbp.engine.core;
 
 import com.fbp.engine.message.Message;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Connection {
     private final String id;
-    private final Queue<Message> buffer;//메시지 버퍼(비동기 처리)
+    private final LinkedBlockingQueue<Message> buffer;//메시지 버퍼(비동기 처리)
     private InputPort target;// 메시지를 받을 대상
 
 
     public Connection(String id) {
-        this.id = id;
-        this.buffer = new LinkedList<>();
+        this(id,100);
     }
 
-    public void deliver(Message message){
-        buffer.offer(message);
+    public Connection(String id, int cap) {
+        this.id = id;
+        this.buffer = new LinkedBlockingQueue<>(cap);
+    }
 
-        if(target != null){
-            Message message1 = buffer.poll();
+    public void deliver(Message message) throws InterruptedException{
+        buffer.put(message);
+    }
 
-            if(message1 !=null){
-                target.receive(message1);
-            }
-        }
+    public Message poll() throws InterruptedException{
+        return buffer.take();
     }
 
     public void setTarget(InputPort target) {

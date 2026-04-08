@@ -9,28 +9,16 @@ import com.fbp.engine.node.GeneratorNode;
 
 public class App {
     public static void main(String[] args) {
-        // 노드 생성
-        GeneratorNode generatorNode = new GeneratorNode("gen-1");
-        PrintNode printNode = new PrintNode("printer-1");
-        FilterNode filterNode = new FilterNode("filter-1", "temperature", 30);
 
-        // 2. Connection 생성
-        Connection conn1 = new Connection("conn-1");
-        Connection conn2 = new Connection("conn-2");
+        Connection connection = new Connection("c1");
+        Connection connection1 = new Connection("c2");
 
-        // 3. 연결 구성
-        // Generator -> Filter
-        generatorNode.getOutputPort().connect(conn1);
-        conn1.setTarget(filterNode.getInputPort());
+        Thread t1 = new Thread(new GeneratorNode("gen",connection));
+        Thread t2 = new Thread(new PrintNode("print",connection1));
+        Thread t3 = new Thread(new FilterNode("filter","f",30,connection,connection1));
 
-        // Filter -> Print
-        filterNode.getOutputPort().connect(conn2);
-        conn2.setTarget(printNode.getInputPort());
-
-        System.out.println("===============");
-        generatorNode.generate("temperature",25);
-
-        System.out.println("===============");
-        generatorNode.generate("temperature",30);
+        t1.start();
+        t2.start();
+        t3.start();
     }
 }
