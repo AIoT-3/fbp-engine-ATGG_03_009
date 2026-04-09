@@ -1,26 +1,41 @@
 package com.fbp.engine.runner;
 
 import com.fbp.engine.core.Connection;
-import com.fbp.engine.core.PrintNode;
+import com.fbp.engine.node.PrintNode;
 import com.fbp.engine.node.FilterNode;
 import com.fbp.engine.node.GeneratorNode;
-
+import com.fbp.engine.node.TimerNode;
 
 
 public class App {
-    public static void main(String[] args) {
-
-        Connection connection = new Connection("c1");
-        Connection connection1 = new Connection("c2");
-
-        Thread t1 = new Thread(new GeneratorNode("gen",connection));
-        Thread t2 = new Thread(new PrintNode("print",connection1));
-        Thread t3 = new Thread(new FilterNode("filter","f",30,connection,connection1));
+    public static void main(String[] args) throws InterruptedException {
 
 
+        TimerNode timer = new TimerNode("timer", 500); // 0.5초
+        FilterNode filter = new FilterNode("filter", "tick", 3);
+        PrintNode print = new PrintNode("print");
 
-        t1.start();
-        t2.start();
-        t3.start();
+
+        Connection c1 = new Connection("c1");
+        Connection c2 = new Connection("c2");
+
+
+        timer.getOutputPort("out").connect(c1);
+        c1.setTarget(filter.getInputPort("in"));
+
+        filter.getOutputPort("out").connect(c2);
+        c2.setTarget(print.getInputPort("in"));
+
+
+        timer.initialize();
+        filter.initialize();
+        print.initialize();
+
+        Thread.sleep(3000);
+
+        timer.shutdown();
+        filter.shutdown();
+        print.shutdown();
     }
 }
+

@@ -1,7 +1,7 @@
 package com.fbp.engine;
 
 import com.fbp.engine.core.Node;
-import com.fbp.engine.core.PrintNode;
+import com.fbp.engine.node.PrintNode;
 import com.fbp.engine.message.Message;
 import org.junit.jupiter.api.Test;
 
