@@ -65,8 +65,4 @@ public class Message {
        return new Message(newPayload);
    }
 
-   @Override
-   public String toString(){
-       return payload.toString();
-   }
 }
