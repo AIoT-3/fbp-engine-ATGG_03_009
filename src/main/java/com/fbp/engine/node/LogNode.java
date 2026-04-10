@@ -17,6 +17,9 @@ public class LogNode extends AbstractNode {
 
     @Override
     protected void onProcess(Message message) throws InterruptedException {
+        // 메시지 수신
+        // 현재 시간 로그 출력
+        // send로 다음 노드에 전달
         String time = LocalDateTime.now().format(formatter);
 
         System.out.println("시간: " + time);

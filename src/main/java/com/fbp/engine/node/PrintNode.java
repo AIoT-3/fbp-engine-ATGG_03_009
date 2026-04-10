@@ -15,6 +15,7 @@ public class PrintNode extends AbstractNode {
 
     @Override
     protected void onProcess(Message message) throws InterruptedException {
+        // 노드 ID 메시지 내용출력만하고 전달은 안함
         System.out.println(getId() + message);
     }
 }

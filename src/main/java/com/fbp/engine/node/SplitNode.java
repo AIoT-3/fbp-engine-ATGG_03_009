@@ -20,6 +20,7 @@ public class SplitNode extends AbstractNode {
 
     @Override
     protected void onProcess(Message message) throws InterruptedException {
+        // 메시지 수신 -> 조건 검사 -> match포트로 이동 아니면 mismatch 포트로 이동
          double msg = message.get(key);
          if(msg >= threshold){
              send("match",message);

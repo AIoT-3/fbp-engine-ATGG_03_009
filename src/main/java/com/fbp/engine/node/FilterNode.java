@@ -17,6 +17,7 @@ public class FilterNode extends AbstractNode {
 
     @Override
     protected void onProcess(Message message) throws InterruptedException {
+        // 메시지 수신 -> 메시지 값 화긴 -> threshold값 이상이면 send 아니면 제거
         double num =  message.get(key);
         if(num >= threshold){
             System.out.println("생성: "+ getId() + "/" + num);

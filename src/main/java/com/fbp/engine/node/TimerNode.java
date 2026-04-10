@@ -22,7 +22,9 @@ public class TimerNode extends AbstractNode {
 
     @Override
     public void initialize() {
-        super.initialize();
+        // 실행시 스레드 시작
+        // 일정 시간마다 message생성
+        // send로 다음 노드에 전달
 
         scheduler = Executors.newSingleThreadScheduledExecutor();
 
@@ -39,12 +41,12 @@ public class TimerNode extends AbstractNode {
 
                 System.out.println("[" + getId() + "] tick: " + tickCount);
 
-                tickCount++; // ⭐ 증가
+                tickCount++;
 
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-        }, 0, intervalMs, TimeUnit.MILLISECONDS); // ⭐ 핵심
+        }, 0, intervalMs, TimeUnit.MILLISECONDS);
     }
 
 
